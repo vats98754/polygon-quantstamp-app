@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-import MyContract from "./SimpleToken.sol";
+import SimpleToken from "/Users/anvayvats/polygon-quantstamp-app/src/contracts/SimpleToken.sol";
 
 function App() {
   const [contract, setContract] = useState(null);
@@ -11,9 +11,9 @@ function App() {
       try {
         const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = MyContract.networks[networkId];
+        const deployedNetwork = SimpleToken.networks[networkId];
         const instance = new web3.eth.Contract(
-          MyContract.abi,
+          SimpleToken.abi,
           deployedNetwork && deployedNetwork.address
         );
         setContract(instance);
