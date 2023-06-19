@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Polygon NFT Marketplace</title>
+    <style>
+        /* CSS styling for the marketplace UI */
+        /* ... */
+    </style>
+</head>
+<body>
+    <h1>Polygon NFT Marketplace</h1>
+
+    <div id="nft-list">
+        <!-- Display the list of NFTs -->
+    </div>
+
+    <button onclick="createNFT()">Create NFT</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script>
+        // JavaScript code to interact with the NFT marketplace contract on Polygon
+        const web3 = new Web3(window.ethereum);
+
+        // Define the contract address and ABI
+        const contractAddress = 'NFT_MARKETPLACE_CONTRACT_ADDRESS';
+        const contractABI = [
+            // NFT Marketplace contract ABI
+            // ...
+        ];
+
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+        // Function to create an NFT
+        async function createNFT() {
+            try {
+                const accounts = await web3.eth.requestAccounts();
+                const account = accounts[0];
+
+                const metadata = 'NFT_METADATA';
+                await contract.methods.createNFT(metadata).send({ from: account });
+
+                // Reload the NFT list
+                getNFTs();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Function to get the list of NFTs
+        async function getNFTs() {
+            try {
+                const nftListDiv = document.getElementById('nft-list');
+                nftListDiv.innerHTML = 'Loading NFTs...';
+
+                const nftCount = await contract.methods.nftCount().call();
+                const nftList = [];
+
+                for (let i = 1; i <= nftCount; i++) {
+                    const nft = await contract.methods.nfts(i).call();
+                    nftList.push(nft);
+                }
+
+                renderNFTs(nftList);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Function to render the NFTs on the webpage
+        function renderNFTs(nftList) {
+            const nftListDiv = document.getElementById('nft-list');
+            nftListDiv.innerHTML = '';
+
+            nftList.forEach((nft) => {
+                const nftDiv = document.createElement('div');
+                nftDiv.innerHTML = `
+                    <h3>NFT ID: ${nft.tokenId}</h3>
+                    <p>Owner: ${nft.owner}</p>
+                    <p>Metadata: ${nft.metadata}</p>
+                    <p>Price: ${nft.price}</p>
+                `;
+
+                nftListDiv.appendChild(nftDiv);
+            });
+        }
+
+        // Call the getNFTs function to initially load the NFT list
+        getNFTs();
+    </script>
+</body>
+</html>
