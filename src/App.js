@@ -33,12 +33,18 @@ function App() {
     }
   };
 
+  const mystyle = {
+    position: 'absolute',
+    width: '100vw',
+    height: '100vh',
+    left: 0,
+    top: 0,
+    background: 'rgba(51,51,51,0.7)',
+    'z-index': 10
+  };
+
   return (
-    <div>
-      <h1>Quantstamp App</h1>
-      <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
-      <button onClick={setNumberHandler}>Set Number</button>
-    </div>
+    <iframe style={mystyle} src="https://nft-market-place.animaapp.io/homepage-desktop"  frameborder="0" width="100%" height="100%" allowFullScreen/>
   );
 }
 
