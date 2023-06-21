@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/polygon-quantstamp-app/static/css/main.e6c13ad2.css",
+    "main.js": "/polygon-quantstamp-app/static/js/main.3f2c22ac.js",
+    "static/js/787.ffb4fac1.chunk.js": "/polygon-quantstamp-app/static/js/787.ffb4fac1.chunk.js",
+    "static/media/SimpleToken.sol": "/polygon-quantstamp-app/static/media/SimpleToken.8b9cf85c7c3e83e4dc7e.sol",
+    "index.html": "/polygon-quantstamp-app/index.html",
+    "main.e6c13ad2.css.map": "/polygon-quantstamp-app/static/css/main.e6c13ad2.css.map",
+    "main.3f2c22ac.js.map": "/polygon-quantstamp-app/static/js/main.3f2c22ac.js.map",
+    "787.ffb4fac1.chunk.js.map": "/polygon-quantstamp-app/static/js/787.ffb4fac1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3f2c22ac.js"
+  ]
+}
