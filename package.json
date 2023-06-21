@@ -21,6 +21,7 @@
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d build"
   },
+  "homepage": "http://vats98754.github.io/polygon-quantstamp-app",
   "eslintConfig": {
     "extends": [
       "react-app",
